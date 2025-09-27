@@ -19,8 +19,9 @@ class TracksRepositoryImpl @Inject constructor(
         val tracks = snapshot.documents.mapNotNull { it.toObject(TrackDto::class.java) }
         val tracksWithDirectLinks = tracks.map { track ->
             async {
-                val directLink = apiService.getDirectLink(track.audioUrl).href ?: String()
-                track.copy(audioUrl = directLink)
+                val audioDirectLink = apiService.getDirectLink(track.audioUrl).href ?: String()
+                val coverDirectLink = apiService.getDirectLink(track.coverUrl).href ?: String()
+                track.copy(audioUrl = audioDirectLink, coverUrl = coverDirectLink)
             }
         }
         tracksWithDirectLinks.awaitAll()
