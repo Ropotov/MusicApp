@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Music App"
 include(":app")
- 
+include(":network:api")
+include(":network:impl")
