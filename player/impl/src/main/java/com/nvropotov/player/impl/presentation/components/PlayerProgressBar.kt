@@ -1,7 +1,9 @@
 package com.nvropotov.player.impl.presentation.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -34,58 +36,63 @@ internal fun PlayerProgressBar(
 ) {
     val progress = if (duration > 0) position.value.toFloat() / duration else 0f
 
-    Slider(
-        value = progress.coerceIn(0f, 1f),
-        onValueChange = { newValue -> onSeek((newValue * duration).toLong()) },
-        thumb = {
-            Image(
-                imageVector = ImageVector.vectorResource(R.drawable.ic_thumb),
-                contentDescription = null,
-                modifier = Modifier.size(Dimens.dp20)
-            )
-        },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = Dimens.dp14)
-            .height(Dimens.dp6),
-        track = { sliderState ->
-            val colors = SliderDefaults.colors(
-                thumbColor = Colors.accentColor,
-                activeTrackColor = Colors.accentColor,
-                inactiveTrackColor = Colors.inactiveSeekBarColor,
-                activeTickColor = Color.Transparent,
-                inactiveTickColor = Color.Transparent
-            )
-            val trackHeight = Dimens.dp6
-            val trackHeightPx = with(LocalDensity.current) { trackHeight.toPx() }
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(Dimens.dp6)
-                    .clip(RoundedCornerShape(Dimens.dp6))
-                    .drawBehind {
-                        val trackWidth = size.width
-                        val y = size.height / 2 - trackHeightPx / 2
-                        val thumbCenterX = trackWidth * sliderState.value
-                        drawRect(
-                            color = colors.activeTrackColor,
-                            topLeft = Offset(0f, y),
-                            size = Size(thumbCenterX, trackHeightPx)
-                        )
-                        drawRect(
-                            color = colors.inactiveTrackColor,
-                            topLeft = Offset(thumbCenterX, y),
-                            size = Size(trackWidth - thumbCenterX, trackHeightPx)
-                        )
-                    }
-            )
-        }
-    )
+    Column(
+        verticalArrangement = Arrangement.spacedBy(Dimens.dp8)
+    ) {
+        Slider(
+            value = progress.coerceIn(0f, 1f),
+            onValueChange = { newValue -> onSeek((newValue * duration).toLong()) },
+            thumb = {
+                Image(
+                    imageVector = ImageVector.vectorResource(R.drawable.ic_thumb),
+                    contentDescription = null,
+                    modifier = Modifier.size(Dimens.dp20)
+                )
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = Dimens.dp14)
+                .height(Dimens.dp6),
+            track = { sliderState ->
+                val colors = SliderDefaults.colors(
+                    thumbColor = Colors.accentColor,
+                    activeTrackColor = Colors.accentColor,
+                    inactiveTrackColor = Colors.inactiveSeekBarColor,
+                    activeTickColor = Color.Transparent,
+                    inactiveTickColor = Color.Transparent
+                )
+                val trackHeight = Dimens.dp6
+                val trackHeightPx = with(LocalDensity.current) { trackHeight.toPx() }
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(Dimens.dp6)
+                        .clip(RoundedCornerShape(Dimens.dp6))
+                        .drawBehind {
+                            val trackWidth = size.width
+                            val y = size.height / 2 - trackHeightPx / 2
+                            val thumbCenterX = trackWidth * sliderState.value
+                            drawRect(
+                                color = colors.activeTrackColor,
+                                topLeft = Offset(0f, y),
+                                size = Size(thumbCenterX, trackHeightPx)
+                            )
+                            drawRect(
+                                color = colors.inactiveTrackColor,
+                                topLeft = Offset(thumbCenterX, y),
+                                size = Size(trackWidth - thumbCenterX, trackHeightPx)
+                            )
+                        }
+                )
+            }
+        )
+        PlayerProgressText(position, duration)
+    }
 }
 
 @Preview(showSystemUi = true)
 @Composable
-private fun PreviewPlayerProgressBar(){
+private fun PreviewPlayerProgressBar() {
     PlayerProgressBar(
         position = rememberUpdatedState(newValue = 8L),
         duration = 12L
