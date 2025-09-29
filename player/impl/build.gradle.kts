@@ -51,4 +51,12 @@ dependencies {
     implementation(libs.dagger.android)
     implementation(libs.dagger.android.support)
     ksp(libs.dagger.android.processor)
+
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.exoplayer.dash)
+    implementation(libs.androidx.media3.ui)
+    implementation(libs.androidx.media3.ui.compose)
+
+    implementation(libs.coil)
+    implementation(libs.coil.compose)
 }
