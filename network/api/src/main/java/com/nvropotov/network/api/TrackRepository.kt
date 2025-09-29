@@ -1,5 +1,5 @@
 package com.nvropotov.network.api
 
 interface TrackRepository {
-    suspend fun getTracks(): List<TrackDto>
+    suspend fun getTracks(): Result<List<TrackDto>>
 }
