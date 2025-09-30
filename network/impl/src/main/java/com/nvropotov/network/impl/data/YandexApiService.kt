@@ -1,6 +1,5 @@
 package com.nvropotov.network.impl.data
 
-import com.nvropotov.network.impl.data.YandexResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
