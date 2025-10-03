@@ -18,10 +18,13 @@ internal object Dimens {
     val dp6 = 6.dp
     val dp4 = 4.dp
     val dp2 = 2.dp
+    val dp1 = 1.dp
 
     val radius20 = 20f
     val radius40 = 40f
 
     val sp10 = 10.sp
+    val sp16 = 16.sp
+    val sp24 = 24.sp
 
 }
