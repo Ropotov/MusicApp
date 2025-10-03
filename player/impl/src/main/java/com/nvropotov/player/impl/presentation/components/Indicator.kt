@@ -21,8 +21,7 @@ internal fun Indicator(onClick: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .clickableNoRipple(onClick)
-            .padding(horizontal = Dimens.dp24)
-            .padding(vertical = Dimens.dp12)
+            .padding(horizontal = Dimens.dp24, vertical = Dimens.dp12)
     ) {
         Spacer(
             modifier = Modifier
