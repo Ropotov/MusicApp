@@ -15,7 +15,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.nvropotov.player.impl.R
 
 @Composable
-internal fun ControlPanel(isPlaying: Boolean) {
+internal fun ControlPanel(
+    isPlaying: Boolean,
+    onTogglePlay: () -> Unit,
+    onNext: () -> Unit,
+    onPrev: () -> Unit,
+) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
@@ -29,9 +34,9 @@ internal fun ControlPanel(isPlaying: Boolean) {
             contentDescription = null,
             tint = Colors.accentColor
         )
-        ControlButton(R.drawable.ic_prev)
-        PlayButton(isPlaying)
-        ControlButton(R.drawable.ic_next)
+        ControlButton(R.drawable.ic_prev, onPrev)
+        PlayButton(isPlaying, onTogglePlay)
+        ControlButton(R.drawable.ic_next, onNext)
         Icon(
             imageVector = ImageVector.vectorResource(R.drawable.ic_download),
             modifier = Modifier.size(Dimens.dp24),
@@ -44,5 +49,5 @@ internal fun ControlPanel(isPlaying: Boolean) {
 @Preview
 @Composable
 private fun PreviewControlPanel() {
-    ControlPanel(false)
+    ControlPanel(false, {}, {}, {})
 }

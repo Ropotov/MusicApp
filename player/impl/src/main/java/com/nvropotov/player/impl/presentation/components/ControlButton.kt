@@ -22,12 +22,14 @@ import com.nvropotov.player.impl.R
 @Composable
 internal fun ControlButton(
     @DrawableRes icon: Int,
+    onClick: () -> Unit,
 ) {
     Box(
         modifier = Modifier
             .size(Dimens.dp70)
             .clip(CircleShape)
             .background(Colors.nextOrPrevShape)
+            .clickableNoRipple(onClick)
     ) {
         Spacer(
             modifier = Modifier
@@ -55,5 +57,5 @@ internal fun ControlButton(
 @Preview
 @Composable
 private fun PreviewControlButton() {
-    ControlButton(R.drawable.ic_next)
+    ControlButton(R.drawable.ic_next) {}
 }
