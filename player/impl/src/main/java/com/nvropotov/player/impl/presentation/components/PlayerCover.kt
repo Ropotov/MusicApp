@@ -1,5 +1,6 @@
 package com.nvropotov.player.impl.presentation.components
 
+import android.net.Uri
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -8,13 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.media3.common.MediaItem
+import androidx.core.net.toUri
 import coil.compose.AsyncImage
 
 @Composable
-internal fun PlayerCover(track: MediaItem) {
+internal fun PlayerCover(cover: Uri? = String().toUri()) {
     AsyncImage(
-        model = track.mediaMetadata.artworkUri,
+        model = cover,
         contentDescription = null,
         modifier = Modifier
             .fillMaxWidth()
@@ -27,5 +28,5 @@ internal fun PlayerCover(track: MediaItem) {
 @Preview
 @Composable
 private fun PreviewPlayerCover() {
-    PlayerCover(MediaItem.EMPTY)
+    PlayerCover(String().toUri())
 }

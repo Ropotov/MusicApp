@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.nvropotov.player.impl.R
 
 @Composable
-internal fun PlayButton(isPlaying: Boolean) {
+internal fun PlayButton(isPlaying: Boolean, onClick: () -> Unit) {
 
     val icon = if (isPlaying) {
         R.drawable.ic_pause
@@ -31,6 +31,7 @@ internal fun PlayButton(isPlaying: Boolean) {
             .size(Dimens.dp70)
             .clip(CircleShape)
             .background(Colors.playOrPauseShape)
+            .clickableNoRipple(onClick)
     ) {
         Spacer(
             modifier = Modifier
@@ -58,5 +59,5 @@ internal fun PlayButton(isPlaying: Boolean) {
 @Preview
 @Composable
 private fun PreviewPlayButton() {
-    PlayButton(false)
+    PlayButton(false) {}
 }

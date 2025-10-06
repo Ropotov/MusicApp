@@ -15,6 +15,7 @@ appcompat = "1.7.1"
 material = "1.13.0"
 dagger = "2.57.2"
 ksp = "2.2.10-2.0.2"
+media3Session = "1.8.0"
 okhttp = "5.1.0"
 retrofit = "3.0.0"
 loggingInterceptor = "5.1.0"
@@ -25,9 +26,12 @@ media3Exoplayer = "1.8.0"
 media3ExoplayerDash = "1.8.0"
 media3Ui = "1.8.0"
 media3UiCompose = "1.8.0"
+constraintlayoutCompose = "1.1.1"
+animation = "1.9.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-media3-session = { module = "androidx.media3:media3-session", version.ref = "media3Session" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-firestore-ktx = { module = "com.google.firebase:firebase-firestore-ktx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -62,8 +66,8 @@ androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", versi
 androidx-media3-exoplayer-dash = { module = "androidx.media3:media3-exoplayer-dash", version.ref = "media3ExoplayerDash" }
 androidx-media3-ui-compose = { module = "androidx.media3:media3-ui-compose", version.ref = "media3UiCompose" }
 androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "media3Ui" }
-
-
+androidx-compose-animation = { group = "androidx.compose.animation", name = "animation", version.ref = "animation" }
+androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayoutCompose" }
 
 
 [plugins]
